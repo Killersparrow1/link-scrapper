@@ -1,53 +1,54 @@
 # Link Scrapper
 
-A Python-based interactive GUI web scraping tool for extracting and collecting links from web pages. This user-friendly utility features a modern graphical interface that makes it easy to crawl websites, parse HTML content, and extract all hyperlinks without needing to write any code.
+A Python-based interactive TUI (Terminal User Interface) web scraping tool for extracting and collecting links from web pages. This user-friendly utility features a modern terminal interface that makes it easy to crawl websites, parse HTML content, and extract all hyperlinks without needing to write any code.
 
 ## Overview
 
-Link Scrapper is a versatile web scraping utility with an intuitive graphical user interface designed to automate the process of discovering and collecting URLs from web pages. Whether you're conducting SEO research, validating links, analyzing website structure, or gathering data for content discovery, Link Scrapper provides an efficient and flexible solution with a clean, modern interface.
+Link Scrapper is a versatile web scraping utility with an intuitive terminal-based user interface designed to automate the process of discovering and collecting URLs from web pages. Whether you're conducting SEO research, validating links, analyzing website structure, or gathering data for content discovery, Link Scrapper provides an efficient and flexible solution with a clean, modern TUI.
 
-Perfect for both technical and non-technical users who want to quickly extract and analyze links from websites.
+Perfect for both technical and non-technical users who want to quickly extract and analyze links from websites directly in the terminal.
 
 ## How It Works
 
 Link Scrapper follows a straightforward workflow:
 
-1. **URL Input** - Enter the target URL in the GUI
+1. **URL Input** - Enter the target URL in the TUI
 2. **HTTP Request** - Makes HTTP requests to fetch the web page content
 3. **HTML Parsing** - Parses the HTML structure using Python parsing libraries
 4. **Link Extraction** - Identifies and extracts all `<a>` tags and their `href` attributes
 5. **Link Classification** - Categorizes links (internal, external, anchor links, etc.)
-6. **Visual Display** - Shows results in an organized table/list view
-7. **Data Export** - Export results in multiple formats with a single click
+6. **Visual Display** - Shows results in an organized table view in the terminal
+7. **Data Export** - Export results in multiple formats with a single command
 
 ### Data Flow Diagram
 
 ```
-URL Input (GUI) → HTTP Request → Response → HTML Parser → Extract Links → Classify → Display in GUI → Export Option
+URL Input (TUI) → HTTP Request → Response → HTML Parser → Extract Links → Classify → Display in Terminal → Export Option
 ```
 
 ## Features
 
 ### Core Scraping Features
-- 🕷️ **Interactive GUI** - User-friendly interface with drag-and-drop URL input
+- 🕷️ **Interactive TUI** - User-friendly terminal interface with intuitive navigation
 - 📝 **Link Collection** - Gather and organize URLs with metadata
 - 🔗 **URL Processing** - Handle various URL formats, protocols (HTTP/HTTPS), relative URLs, and anchor links
 - 🔍 **Link Classification** - Distinguish between internal and external links automatically
 - 📊 **Real-time Display** - View results in an organized table format as they're processed
 - 📈 **Statistics** - Automatic calculation of link counts and categorization
 
-### GUI Features
-- ✨ **Clean, Modern Interface** - Intuitive design that's easy to navigate
-- 🎯 **One-Click Scraping** - Simply paste a URL and click the scrape button
-- 🔄 **Live Progress Indicator** - See scraping progress in real-time
+### TUI Features
+- ✨ **Clean, Modern Terminal Interface** - Beautiful ASCII/Unicode design that's easy to navigate
+- 🎯 **One-Command Scraping** - Simple commands to scrape and analyze websites
+- 🔄 **Live Progress Indicator** - See scraping progress in real-time in the terminal
 - 📋 **Results Table** - View all extracted links in a sortable, filterable table
-- 🖥️ **Dark/Light Theme** (Optional) - Customize the interface appearance
+- 🎨 **Color-Coded Output** - Different colors for different link types
 - 📌 **History** - Quick access to recently scraped URLs
 - 🔐 **SSL Verification Toggle** - Easy option to handle SSL certificate issues
+- ⬆️⬇️ **Keyboard Navigation** - Arrow keys to navigate, Enter to select
 
 ### Export & Analysis
 - 💾 **Multiple Export Formats** - JSON, CSV, Excel, and Plain Text
-- 📄 **One-Click Export** - Export results with a single button click
+- 📄 **One-Command Export** - Export results easily
 - 📊 **Statistics Panel** - View detailed breakdown of links
 - 🔗 **Link Filtering** - Filter results by link type, domain, or custom criteria
 - 📑 **Batch Reports** - Generate comprehensive reports
@@ -55,10 +56,9 @@ URL Input (GUI) → HTTP Request → Response → HTML Parser → Extract Links 
 ## Requirements
 
 - **Python** 3.7 or higher
-- **tkinter** - For GUI (usually included with Python)
 - **requests** - For making HTTP requests
 - **BeautifulSoup4** - For HTML parsing
-- **Pillow** (Optional) - For enhanced image display in GUI
+- **Rich** or **Textual** - For beautiful terminal UI (depending on implementation)
 
 ## Installation
 
@@ -90,14 +90,14 @@ pip install -r requirements.txt
 Or install manually:
 
 ```bash
-pip install requests beautifulsoup4 pillow
+pip install requests beautifulsoup4 rich
 ```
 
 ## Usage
 
 ### Launching the Application
 
-Simply run the main script to launch the GUI:
+Simply run the main script to launch the TUI:
 
 ```bash
 python link_scrapper.py
@@ -109,31 +109,43 @@ Or if it's a different filename:
 python main.py
 ```
 
-### GUI Walkthrough
+### TUI Walkthrough
 
-#### 1. **Input Section**
+#### 1. **Main Menu**
+   ```
+   ╔═══════════════════════════════════╗
+   ║      Link Scrapper v1.0           ║
+   ║    Terminal User Interface        ║
+   ╠═══════════════════════════════════╣
+   ║  [1] Start New Scrape             ║
+   ║  [2] View History                 ║
+   ║  [3] Export Results               ║
+   ║  [4] Settings                     ║
+   ║  [5] Help                         ║
+   ║  [Q] Quit                         ║
+   ╚═══════════════════════════════════╝
+   ```
+
+#### 2. **Input Section**
    - Paste or type the URL you want to scrape
-   - Click "Scrape" or press Enter to start
+   - Press Enter to start
    - Watch the progress indicator as the scraper works
 
-#### 2. **Results Section**
-   - View all extracted links in the results table
+#### 3. **Results Section**
+   - View all extracted links in a formatted table
    - Columns typically include:
      - **URL** - The link href
      - **Text** - Link anchor text
      - **Type** - Internal or External
      - **Status** - Valid, Broken, etc.
+   - Use arrow keys to navigate through results
+   - Press 'c' to copy a link, 'v' to validate, 'e' to export
 
-#### 3. **Filters & Options**
-   - Filter by link type (Internal/External/All)
-   - Search for specific links
-   - Sort by any column
-   - Copy individual links or all results
-
-#### 4. **Export Section**
-   - Select export format (JSON, CSV, Excel, TXT)
-   - Choose save location
-   - Click "Export" to save results
+#### 4. **Filters & Options**
+   - Navigate with arrow keys
+   - Press 'f' to filter by link type (Internal/External/All)
+   - Press 's' to search for specific links
+   - Press 'o' to sort by any column
 
 #### 5. **Statistics Panel**
    - Total links found
@@ -142,58 +154,118 @@ python main.py
    - Broken links (if checked)
    - Processing time
 
-### Menu Options
+### Command Reference
 
-**File Menu**
-- New Scrape
-- Open Recent
-- Export Results
-- Exit
+**Navigation**
+```
+↑/↓        - Move up/down in menus and tables
+←/→        - Navigate between sections
+Enter      - Select/Confirm
+Esc        - Go back/Cancel
+Tab        - Move to next field
+Shift+Tab  - Move to previous field
+```
 
-**Tools Menu**
-- Settings/Preferences
-- Check Links (Validate URLs)
-- Clear History
-- About
+**Actions**
+```
+S          - Start new scrape
+H          - View history
+E          - Export results
+F          - Filter results
+K          - Check/validate links
+C          - Copy selected link
+V          - Open in browser
+D          - Delete from history
+?          - Show help
+Q          - Quit
+```
 
-**Help Menu**
-- Documentation
-- Keyboard Shortcuts
-- Check for Updates
-- Report Bug
+## TUI Sections
 
-## GUI Features in Detail
+### Main Dashboard
+```
+┌─────────────────────────────────────────────────────────────┐
+│ Link Scrapper Dashboard                              [⚙ ✕]  │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  Enter URL: https://example.com                           │
+│             [Scrape] [Clear] [History]                    │
+│                                                             │
+│  Status: ⠋ Scraping... (23/45 links found)                │
+│                                                             │
+│ Results (↑/↓ navigate, c=copy, v=validate, e=export):     │
+│ ┌──────────────────────────────────────────────────────┐  │
+│ │ URL                    │ Text      │ Type │ Status   │  │
+│ ├──────────────────────────────────────────────────────┤  │
+│ │ /about                 │ About Us  │ INT  │ ✓ Valid  │  │
+│ │ https://example.com    │ Home      │ INT  │ ✓ Valid  │  │
+│ │ https://external.com   │ External  │ EXT  │ ✓ Valid  │  │
+│ │ /services              │ Services  │ INT  │ ✓ Valid  │  │
+│ └──────────────────────────────────────────────────────┘  │
+│                                                             │
+│ Statistics: Total: 45 | Internal: 35 | External: 10       │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+```
 
-### Scraping Options (Settings)
+### Settings Panel
+```
+┌─────────────────────────────────────────┐
+│ Settings                                │
+├─────────────────────────────────────────┤
+│                                         │
+│ Network:                                │
+│  └─ Timeout (seconds)        [  10  ]  │
+│  └─ Verify SSL Certificate   [  ON  ]  │
+│  └─ Use Proxy                [  OFF ]  │
+│                                         │
+│ Scraping:                               │
+│  └─ Include Anchor Links     [  ON  ]  │
+│  └─ Follow Redirects         [  ON  ]  │
+│  └─ Extract Link Text        [  ON  ]  │
+│                                         │
+│ Export:                                 │
+│  └─ Default Format           [  JSON]  │
+│  └─ Save Location            [~/...]   │
+│                                         │
+│         [Save] [Reset] [Back]           │
+└─────────────────────────────────────────┘
+```
 
-Within the GUI, you can configure:
+### Results Display
+```
+Links found: 45 | Internal: 35 | External: 10 | Time: 2.34s
 
-- **Timeout** - Set HTTP request timeout duration
-- **User-Agent** - Customize the user agent string
-- **SSL Verification** - Enable/disable SSL certificate validation
-- **Proxy** - Configure proxy server (if needed)
-- **Include Anchor Links** - Choose to include or exclude anchor links
-- **Follow Redirects** - Handle URL redirects
-- **Extract Link Text** - Capture anchor text along with URLs
+URL                          Text              Type  Status
+─────────────────────────────────────────────────────────────
+https://example.com/about    About Us          INT   ✓ Valid
+https://example.com/contact  Contact           INT   ✓ Valid
+https://external-site.com    Partners          EXT   ✓ Valid
+/blog                        Blog Posts        INT   ✓ Valid
+#section                     Section Link      ANC   ✓ Valid
+https://old-link.com         Old Link          EXT   ✗ Broken
 
-### Results Table Features
+[↑/↓] Navigate | [C]opy | [E]xport | [F]ilter | [V]alidate | [Q]uit
+```
 
-- **Sortable Columns** - Click column headers to sort
-- **Right-Click Context Menu** - Copy, open, or validate individual links
-- **Search Bar** - Quick filter by keyword
-- **Select All/None** - Bulk selection for export
-- **Drag & Drop** - Reorder or manage results
+## Export Options
 
-### Visual Indicators
+Press 'E' to export and choose your format:
 
-- 🟢 **Green** - Valid/Internal links
-- 🔵 **Blue** - External links
-- 🟡 **Yellow** - Broken/Invalid links
-- ⚪ **Gray** - Anchor links
+```
+Select Export Format:
+[1] JSON (.json)
+[2] CSV (.csv)
+[3] Excel (.xlsx)
+[4] Plain Text (.txt)
+[5] Markdown (.md)
+
+Choice: _
+```
 
 ## Output Examples
 
-### Table View (in GUI)
+### Table View (in Terminal)
 ```
 URL                          | Text              | Type       | Status
 ---------------------------  | ---------------   | ---------- | --------
@@ -242,18 +314,25 @@ https://external-site.com,External Link,external,valid,2024-01-15 10:30:45
 
 ## Keyboard Shortcuts
 
-- `Ctrl+N` - New scrape
-- `Ctrl+E` - Export results
-- `Ctrl+C` - Copy selected link(s)
-- `Ctrl+A` - Select all results
-- `Ctrl+F` - Open find/filter
-- `Ctrl+Q` - Quit application
-- `F5` - Refresh results
-- `Enter` - Start scraping (when URL field is focused)
+| Shortcut | Action |
+|----------|--------|
+| `S` | Start new scrape |
+| `H` | View history |
+| `E` | Export results |
+| `F` | Filter results |
+| `K` | Check/validate links |
+| `C` | Copy selected link |
+| `V` | Open link in browser |
+| `D` | Delete history entry |
+| `↑/↓` | Navigate table |
+| `Enter` | Select/Confirm |
+| `Esc` | Go back |
+| `?` | Show help |
+| `Q` | Quit application |
 
 ## Error Handling
 
-Link Scrapper handles common errors gracefully with visual feedback:
+Link Scrapper handles common errors gracefully with visual feedback in the TUI:
 
 - **Connection Errors** - Shows error message and suggests troubleshooting steps
 - **Timeout Errors** - Displays timeout notification with retry option
@@ -262,9 +341,9 @@ Link Scrapper handles common errors gracefully with visual feedback:
 - **SSL Certificate Issues** - Offers option to disable verification
 
 Error messages appear in:
-- Status bar at the bottom
-- Pop-up dialogs for critical errors
-- Error log (accessible from menu)
+- Status bar at the bottom of the TUI
+- Error log accessible from the main menu
+- Inline notifications during operations
 
 ## API Usage (Python Module)
 
@@ -296,10 +375,18 @@ scraper.export_to_csv(results, "output.csv")
 ## Performance Considerations
 
 - **Large Websites** - Efficiently handles pages with thousands of links
-- **Responsive GUI** - Scraping runs in background thread to keep interface responsive
+- **Responsive TUI** - Scraping runs in background to keep interface responsive
 - **Memory Usage** - Optimized for handling large link collections
 - **Processing Speed** - Typical websites scraped in 1-5 seconds
 - **Batch Processing** - Queue multiple URLs for sequential scraping
+- **Terminal Compatibility** - Works in most modern terminals (256 color support recommended)
+
+## Terminal Requirements
+
+- **Terminal Type**: Most modern terminals (bash, zsh, Windows Terminal, iTerm2, etc.)
+- **Colors**: 256-color or True Color support recommended for best appearance
+- **Size**: Minimum 80x24 terminal (larger recommended for better table display)
+- **Unicode**: UTF-8 encoding support for better visual elements
 
 ## Limitations
 
@@ -313,39 +400,41 @@ scraper.export_to_csv(results, "output.csv")
 
 ### Common Issues & Solutions
 
-**Issue: GUI doesn't launch**
+**Issue: TUI doesn't display correctly**
 ```bash
-# Make sure tkinter is installed
-python -m tkinter
+# Ensure terminal supports Unicode and colors
+export TERM=xterm-256color
+python link_scrapper.py
 
-# If missing, install it:
-# On Ubuntu/Debian
-sudo apt-get install python3-tk
-
-# On macOS with homebrew
-brew install python-tk
+# Or try with basic colors:
+export COLORTERM=truecolor
+python link_scrapper.py
 ```
 
+**Issue: Characters are garbled**
+- Check your terminal encoding is set to UTF-8
+- Try a different terminal emulator
+- Run with: `export LC_ALL=en_US.UTF-8`
+
 **Issue: SSL Certificate Error**
-- Go to Settings → Security
+- Go to Settings (press 4)
 - Toggle "Verify SSL Certificate" OFF
 - Try scraping again
 
 **Issue: Timeout Errors**
-- Go to Settings → Network
+- Go to Settings (press 4)
 - Increase the "Timeout (seconds)" value
 - Try scraping again
 
 **Issue: No Links Found**
 - Check if the URL is accessible (try in browser)
 - Verify the HTML structure contains `<a>` tags
-- Enable "Verbose Mode" in Settings to see detailed logs
-- Check the error log in the GUI
+- Check the error log in the TUI
 
 **Issue: Slow Performance**
-- Reduce the number of concurrent requests in Settings
-- Close other applications to free up memory
+- Close other terminal windows to free up resources
 - Try scraping a simpler/smaller website first
+- Check your internet connection
 
 ## Contributing
 
@@ -364,9 +453,8 @@ Found a bug? Please open an issue with:
 - Detailed description of the problem
 - Steps to reproduce
 - Expected vs actual behavior
-- Screenshots (if applicable)
-- Your Python version, OS, and Python environment
-- Full error log from the GUI
+- Your Python version, OS, and terminal type
+- Full error log from the TUI error menu
 
 ### Feature Requests
 
@@ -400,33 +488,25 @@ For questions, issues, or suggestions:
 ## Changelog
 
 ### Version 1.0.0 (Current)
-- Interactive GUI application
+- Interactive TUI application
 - Basic link scraping functionality
 - JSON/CSV/Excel export
 - Internal/external link classification
-- Real-time results display
+- Real-time results display in terminal
 - Settings panel
 - Link validation
 - Statistics dashboard
+- Color-coded output
+- Full keyboard navigation
 
 ### Planned Features
 - Batch URL processing
 - Link availability checker
 - Sitemaps.xml support
-- Browser integration
 - Database export
 - Advanced filtering
 - Multi-threading support
-
-## Screenshots
-
-*[Screenshots would show the main GUI window, results table, export dialog, settings panel, etc.]*
-
----
-
-## Quick Start Video
-
-*[Link to tutorial video would go here]*
+- Config file support
 
 ---
 
